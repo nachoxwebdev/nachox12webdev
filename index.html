@@ -13,329 +13,236 @@
     <title>NACHOX12 | Desarrollo Web</title>
     <link rel="icon" type="image/png" href="imagenes/favicon.png">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Estilos adicionales para el slider hero */
-        .hero-slider {
-            width: 100%;
-            max-width: 90%;
-            margin: 0 auto;
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .slider-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1584 / 672; /* proporción de tus imágenes */
-        }
-        .slider-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .slider-img.active {
-            opacity: 1;
-        }
-        /* Botones de navegación */
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.6);
-            color: white;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 0 15px;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-            z-index: 10;
-        }
-        .slider-btn:hover {
-            background: var(--primary);
-        }
-        .slider-btn.prev {
-            left: 15px;
-        }
-        .slider-btn.next {
-            right: 15px;
-        }
-        /* Puntos indicadores */
-        .slider-dots {
-            text-align: center;
-            margin-top: 15px;
-        }
-        .dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #555;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-        @media (max-width: 768px) {
-            .hero-slider {
-                max-width: 95%;
-            }
-            .slider-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 1.2rem;
-            }
-        }
-        /* Ajuste para ocultar el h1 original y mantener el subtítulo */
-        .hero h1 {
-            display: none;
-        }
-    </style>
 </head>
 <body>
-
-<header>
-    <div class="logo-container">
-        <img src="imagenes/logo.png" alt="Logo NACHOX12" class="logo-img" loading="lazy">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <img src="imagenes/logo.png" alt="Cargando..." class="preloader-logo" />
+        <div class="preloader-spinner"></div>
     </div>
-    <div class="menu-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-    </div>
-    <nav id="nav-menu">
-        <a href="#inicio" class="nav-link">Inicio</a>
-        <a href="#proyectos" class="nav-link">Proyectos</a>
-        <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#sobre" class="nav-link">Sobre mí</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
-    </nav>
-</header>
 
-<main>
-    <section class="hero" id="inicio">
-        <!-- Slider de imágenes -->
-        <div class="hero-slider">
-            <div class="slider-container">
-                <img src="imagenes/banner-1.png" alt="NACHOX12 - banner 1" class="slider-img active" loading="lazy">
-                <img src="imagenes/banner-2.png" alt="NACHOX12 - banner 2" class="slider-img" loading="lazy">
-                <button class="slider-btn prev" id="prevBtn">❮</button>
-                <button class="slider-btn next" id="nextBtn">❯</button>
-            </div>
-            <div class="slider-dots" id="sliderDots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-            </div>
+    <!-- Partículas -->
+    <div id="particles-container"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="imagenes/logo.png" alt="Logo NACHOX12" class="logo-img" loading="lazy">
         </div>
-        <h1 style="display: none;">NACHOX12</h1>
-        <p>Desarrollo Web</p>
-        <a href="#proyectos" class="btn">Ver proyectos</a>
-    </section>
-
-    <!-- El resto de tu contenido (proyectos, servicios, etc.) se mantiene igual -->
-    <section class="section" id="proyectos">
-        <h2>Proyectos</h2>
-        <div class="proyectos">
-            <div class="card">
-                <a href="https://nachoxwebdev.github.io/aygshinyaccesorios/" target="_blank" rel="noopener noreferrer">
-                    <img src="imagenes/ayg-preview.png" alt="Vista previa de AYG Shiny Accesorios" loading="lazy">
-                </a>
-                <h3>AYG SHINY ACCESORIOS</h3>
-                <p>Tienda online de accesorios con catálogo, carrito de compras y diseño responsive.</p>
-                <a href="https://nachoxwebdev.github.io/aygshinyaccesorios/" target="_blank" rel="noopener noreferrer" class="btn btn-small">Ver sitio</a>
-            </div>
-            <div class="card">
-                <a href=" https://nachoxwebdev.github.io/dgddigital/" target="_blank" rel="noopener noreferrer">
-                    <img src="imagenes/preview-dgd.jpg" alt="Vista previa de DGD Diseñador Gráfico" loading="lazy">
-                </a>
-                <h3>DGD DISEÑADOR GRÁFICO</h3>
-                <p>Web de especialista en diseño y comunicación digital con sus trabajos y contacto.</p>
-                <a href=" https://nachoxwebdev.github.io/dgddigital/" target="_blank" rel="noopener noreferrer" class="btn btn-small">Ver sitio</a>
-            </div>
+        <div class="menu-toggle" id="menu-toggle" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0">
+            <span></span><span></span><span></span>
         </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section class="section" id="servicios">
-        <h2>Servicios</h2>
-        <div class="servicios-grid">
-            <div class="servicio-card">
-                <div class="servicio-icon">💻</div>
-                <h3>Desarrollo Web</h3>
-                <p>Sitios modernos, rápidos y adaptados a cualquier dispositivo.</p>
-            </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">📱</div>
-                <h3>Diseño Responsive</h3>
-                <p>Tu página se verá perfecta en celular, tablet y computadora.</p>
-            </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">⚡</div>
-                <h3>Optimización</h3>
-                <p>Carga rápida y código limpio para mejor rendimiento.</p>
-            </div>
-            <div class="servicio-card">
-                <div class="servicio-icon">🛒</div>
-                <h3>Tiendas Online</h3>
-                <p>Integración de catálogo y carrito de compras.</p>
-            </div>
+        <nav id="nav-menu" role="navigation" aria-label="Menú principal">
+            <a href="#inicio" class="nav-link" data-i18n="nav.inicio">Inicio</a>
+            <a href="#proyectos" class="nav-link" data-i18n="nav.proyectos">Proyectos</a>
+            <a href="#servicios" class="nav-link" data-i18n="nav.servicios">Servicios</a>
+            <a href="#proceso" class="nav-link" data-i18n="nav.proceso">Proceso</a>
+            <a href="#sobre" class="nav-link" data-i18n="nav.sobre">Sobre mí</a>
+            <a href="#contacto" class="nav-link" data-i18n="nav.contacto">Contacto</a>
+        </nav>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="es" aria-label="Español">ES</button>
+            <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
         </div>
-    </section>
+    </header>
 
-    <!-- TECNOLOGÍAS -->
-    <section class="section" id="tecnologias">
-        <h2>Tecnologías</h2>
-        <div class="tech-icons">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>React</span>
-            <span>Git</span>
-            <span>Netlify</span>
+    <main>
+        <!-- Hero con slider -->
+        <section class="hero" id="inicio">
+            <div class="hero-slider">
+                <div class="slider-container" id="sliderContainer">
+                    <img src="imagenes/banner-1.png" alt="NACHOX12 - banner 1" class="slider-img active" loading="lazy">
+                    <img src="imagenes/banner-2.png" alt="NACHOX12 - banner 2" class="slider-img" loading="lazy">
+                    <button class="slider-btn prev" id="prevBtn" aria-label="Anterior">❮</button>
+                    <button class="slider-btn next" id="nextBtn" aria-label="Siguiente">❯</button>
+                </div>
+                <div class="slider-dots" id="sliderDots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                </div>
+            </div>
+            <h1 style="display:none;">NACHOX12</h1>
+            <p><span class="typewriter-text" id="typewriter" data-i18n="hero.subtitle"></span></p>
+            <a href="#proyectos" class="btn" data-i18n="hero.cta">Ver proyectos</a>
+        </section>
+
+        <!-- Proyectos -->
+        <section class="section" id="proyectos">
+            <h2 data-i18n="proyectos.titulo">Proyectos</h2>
+            <div class="proyectos">
+                <div class="card">
+                    <a href="https://nachoxwebdev.github.io/aygshinyaccesorios/" target="_blank" rel="noopener noreferrer">
+                        <img src="imagenes/ayg-preview.png" alt="Vista previa de AYG Shiny Accesorios" loading="lazy">
+                    </a>
+                    <h3>AYG SHINY ACCESORIOS</h3>
+                    <p data-i18n="proyectos.ayg.desc">Tienda online de accesorios con catálogo, carrito de compras y diseño responsive.</p>
+                    <a href="https://nachoxwebdev.github.io/aygshinyaccesorios/" target="_blank" rel="noopener noreferrer" class="btn btn-small" data-i18n="proyectos.ver">Ver sitio</a>
+                </div>
+                <div class="card">
+                    <a href="https://nachoxwebdev.github.io/dgddigital/" target="_blank" rel="noopener noreferrer">
+                        <img src="imagenes/preview-dgd.jpg" alt="Vista previa de DGD Diseñador Gráfico" loading="lazy">
+                    </a>
+                    <h3>DGD DISEÑADOR GRÁFICO</h3>
+                    <p data-i18n="proyectos.dgd.desc">Web de especialista en diseño y comunicación digital con sus trabajos y contacto.</p>
+                    <a href="https://nachoxwebdev.github.io/dgddigital/" target="_blank" rel="noopener noreferrer" class="btn btn-small" data-i18n="proyectos.ver">Ver sitio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios -->
+        <section class="section" id="servicios">
+            <h2 data-i18n="servicios.titulo">Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <div class="servicio-icon">💻</div>
+                    <h3 data-i18n="servicios.dev.titulo">Desarrollo Web</h3>
+                    <p data-i18n="servicios.dev.desc">Sitios modernos, rápidos y adaptados a cualquier dispositivo.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">📱</div>
+                    <h3 data-i18n="servicios.responsive.titulo">Diseño Responsive</h3>
+                    <p data-i18n="servicios.responsive.desc">Tu página se verá perfecta en celular, tablet y computadora.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">⚡</div>
+                    <h3 data-i18n="servicios.optimizacion.titulo">Optimización</h3>
+                    <p data-i18n="servicios.optimizacion.desc">Carga rápida y código limpio para mejor rendimiento.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">🛒</div>
+                    <h3 data-i18n="servicios.tiendas.titulo">Tiendas Online</h3>
+                    <p data-i18n="servicios.tiendas.desc">Integración de catálogo y carrito de compras.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">🔧</div>
+                    <h3 data-i18n="servicios.mantenimiento.titulo">Mantenimiento Mensual</h3>
+                    <p data-i18n="servicios.mantenimiento.desc">Actualizaciones, copias de seguridad y soporte continuo para tu sitio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proceso de trabajo -->
+        <section class="section" id="proceso">
+            <h2 data-i18n="proceso.titulo">Proceso de trabajo</h2>
+            <div class="proceso-grid">
+                <div class="proceso-paso">
+                    <div class="paso-numero">1</div>
+                    <h3 data-i18n="proceso.consulta.titulo">Consulta</h3>
+                    <p data-i18n="proceso.consulta.desc">Hablamos de tu proyecto, necesidades y objetivos.</p>
+                </div>
+                <div class="proceso-paso">
+                    <div class="paso-numero">2</div>
+                    <h3 data-i18n="proceso.diseno.titulo">Diseño</h3>
+                    <p data-i18n="proceso.diseno.desc">Creo un mockup o prototipo que refleje tu marca.</p>
+                </div>
+                <div class="proceso-paso">
+                    <div class="paso-numero">3</div>
+                    <h3 data-i18n="proceso.desarrollo.titulo">Desarrollo</h3>
+                    <p data-i18n="proceso.desarrollo.desc">Programo el sitio con código limpio y optimizado.</p>
+                </div>
+                <div class="proceso-paso">
+                    <div class="paso-numero">4</div>
+                    <h3 data-i18n="proceso.entrega.titulo">Entrega</h3>
+                    <p data-i18n="proceso.entrega.desc">Subo tu web y te enseño a gestionarla.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnologías -->
+        <section class="section" id="tecnologias">
+            <h2 data-i18n="tecnologias.titulo">Tecnologías</h2>
+            <div class="tech-icons">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>React</span>
+                <span>Git</span>
+                <span>Netlify</span>
+            </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section class="section stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5">0</div>
+                    <p data-i18n="stats.proyectos">Proyectos entregados</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="4">0</div>
+                    <p data-i18n="stats.clientes">Clientes felices</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="2">0</div>
+                    <p data-i18n="stats.experiencia">Años de experiencia</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios -->
+        <section class="section" id="testimonios">
+            <h2 data-i18n="testimonios.titulo">Lo que dicen mis clientes</h2>
+            <div class="testimonios-grid">
+                <div class="testimonio">
+                    <p data-i18n="testimonios.ayg">"Excelente trabajo, muy profesional y cumplió con los plazos. Mi sitio web luce increíble."</p>
+                    <h4>- AYG Shiny Accesorios</h4>
+                </div>
+                <div class="testimonio">
+                    <p data-i18n="testimonios.dgd">"Muy atento a los detalles, resolvió todas mis dudas. Recomendado."</p>
+                    <h4>- DGD Diseño</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre mí -->
+        <section class="section" id="sobre">
+            <h2 data-i18n="sobre.titulo">Sobre mí</h2>
+            <div class="sobre">
+                <p data-i18n="sobre.texto1">Soy desarrollador web enfocado en crear páginas modernas, rápidas y optimizadas para negocios y emprendedores.</p>
+                <br>
+                <p data-i18n="sobre.texto2">Trabajo con HTML, CSS y JavaScript para construir sitios profesionales que ayuden a las marcas a tener presencia online.</p>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="section" id="contacto">
+            <h2 data-i18n="contacto.titulo">Contacto</h2>
+            <div class="contacto">
+                <p data-i18n="contacto.pregunta">¿Querés una página web para tu negocio?</p>
+                <br>
+                <a class="btn" href="https://wa.me/5493364278256" target="_blank" rel="noopener noreferrer" data-i18n="contacto.whatsapp">Contactar por WhatsApp</a>
+                
+                <div style="margin-top: 20px;">
+                    <a class="btn" href="https://www.instagram.com/nachox12.webdev/" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);" data-i18n="contacto.instagram">📷 Seguime en Instagram</a>
+                </div>
+
+                <div class="contacto-form">
+                    <p data-i18n="contacto.form.mensaje">O dejame tu mensaje y te respondo a la brevedad:</p>
+                    <form id="contact-form">
+                        <input type="text" placeholder="Tu nombre" required data-i18n-placeholder="contacto.form.nombre">
+                        <input type="email" placeholder="Tu email" required data-i18n-placeholder="contacto.form.email">
+                        <input type="text" placeholder="Asunto (ej: Tienda online)" required data-i18n-placeholder="contacto.form.asunto">
+                        <textarea placeholder="Contame de tu proyecto..." rows="4" required data-i18n-placeholder="contacto.form.mensaje"></textarea>
+                        <button type="submit" class="btn" data-i18n="contacto.form.enviar">Enviar mensaje</button>
+                    </form>
+                    <small data-i18n="contacto.form.respuesta">Te responderé por WhatsApp o email.</small>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 NACHOX12 - Desarrollo Web</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/nachox12.webdev/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
         </div>
-    </section>
+    </footer>
 
-    <!-- ESTADÍSTICAS -->
-    <section class="section stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number" data-target="5">0</div>
-                <p>Proyectos entregados</p>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="4">0</div>
-                <p>Clientes felices</p>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="2">0</div>
-                <p>Años de experiencia</p>
-            </div>
-        </div>
-    </section>
+    <button id="btn-up" aria-label="Volver arriba">↑</button>
 
-    <!-- TESTIMONIOS -->
-    <section class="section" id="testimonios">
-        <h2>Lo que dicen mis clientes</h2>
-        <div class="testimonios-grid">
-            <div class="testimonio">
-                <p>"Excelente trabajo, muy profesional y cumplió con los plazos. Mi sitio web luce increíble."</p>
-                <h4>- AYG Shiny Accesorios</h4>
-            </div>
-            <div class="testimonio">
-                <p>"Muy atento a los detalles, resolvió todas mis dudas. Recomendado."</p>
-                <h4>- DGD Diseño</h4>
-            </div>
-        </div>
-    </section>
+    <!-- Toast container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-    <section class="section" id="sobre">
-        <h2>Sobre mí</h2>
-        <div class="sobre">
-            <p>Soy desarrollador web enfocado en crear páginas modernas, rápidas y optimizadas para negocios y emprendedores.</p>
-            <br>
-            <p>Trabajo con HTML, CSS y JavaScript para construir sitios profesionales que ayuden a las marcas a tener presencia online.</p>
-        </div>
-    </section>
-
-    <section class="section" id="contacto">
-        <h2>Contacto</h2>
-        <div class="contacto">
-            <p>¿Querés una página web para tu negocio?</p>
-            <br>
-            <a class="btn" href="https://wa.me/5493364278256" target="_blank" rel="noopener noreferrer">Contactar por WhatsApp</a>
-            
-            <div style="margin-top: 20px;">
-                <a class="btn" href="https://www.instagram.com/nachox12.webdev/" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">📷 Seguime en Instagram</a>
-            </div>
-
-            <div class="contacto-form">
-                <p>O dejame tu mensaje y te respondo a la brevedad:</p>
-                <form id="contact-form">
-                    <input type="text" placeholder="Tu nombre" required>
-                    <input type="email" placeholder="Tu email" required>
-                    <textarea placeholder="Contame de tu proyecto..." rows="4" required></textarea>
-                    <button type="submit" class="btn">Enviar mensaje</button>
-                </form>
-                <small>Te responderé por WhatsApp o email.</small>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <p>© 2026 NACHOX12 - Desarrollo Web</p>
-    <div class="social-links">
-        <a href="https://www.instagram.com/nachox12.webdev/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
-    </div>
-</footer>
-
-<button id="btn-up" aria-label="Volver arriba">↑</button>
-
-<script src="script.js" defer></script>
-<script>
-    // Slider manual + automático (no interferimos con tu script.js existente)
-    (function() {
-        const images = document.querySelectorAll('.slider-img');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        let currentIndex = 0;
-        let interval;
-
-        function showImage(index) {
-            if (index < 0) index = images.length - 1;
-            if (index >= images.length) index = 0;
-            images.forEach((img, i) => {
-                img.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-            currentIndex = index;
-        }
-
-        function nextImage() {
-            showImage(currentIndex + 1);
-            resetInterval();
-        }
-
-        function prevImage() {
-            showImage(currentIndex - 1);
-            resetInterval();
-        }
-
-        function resetInterval() {
-            clearInterval(interval);
-            interval = setInterval(() => {
-                nextImage();
-            }, 5000); // 5 segundos
-        }
-
-        // Eventos manuales
-        if (prevBtn) prevBtn.addEventListener('click', prevImage);
-        if (nextBtn) nextBtn.addEventListener('click', nextImage);
-        dots.forEach((dot, idx) => {
-            dot.addEventListener('click', () => {
-                showImage(idx);
-                resetInterval();
-            });
-        });
-
-        // Iniciar el slider automático
-        resetInterval();
-    })();
-</script>
+    <script src="script.js" defer></script>
 </body>
 </html>
