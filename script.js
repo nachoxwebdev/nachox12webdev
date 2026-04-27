@@ -12,6 +12,7 @@ const translations = {
         "proyectos.titulo": "Proyectos",
         "proyectos.ayg.desc": "Tienda online de accesorios con catálogo, carrito de compras y diseño responsive.",
         "proyectos.dgd.desc": "Web de especialista en diseño y comunicación digital con sus trabajos y contacto.",
+        "proyectos.resto.desc": "Prototipo de restaurant con menú, reservas y diseño moderno.",
         "proyectos.ver": "Ver sitio",
         "servicios.titulo": "Servicios",
         "servicios.dev.titulo": "Desarrollo Web",
@@ -67,6 +68,7 @@ const translations = {
         "proyectos.titulo": "Projects",
         "proyectos.ayg.desc": "Online accessories store with catalog, shopping cart and responsive design.",
         "proyectos.dgd.desc": "Website for a design and digital communication specialist with portfolio and contact.",
+        "proyectos.resto.desc": "Restaurant prototype with menu, reservations and modern design.",
         "proyectos.ver": "View site",
         "servicios.titulo": "Services",
         "servicios.dev.titulo": "Web Development",
@@ -114,14 +116,21 @@ const translations = {
 
 let currentLang = 'es';
 
-// ======================== PRELOADER ========================
-window.addEventListener('load', () => {
+// ======================== PRELOADER (CON FALLBACK DE TIEMPO) ========================
+(function() {
     const preloader = document.getElementById('preloader');
-    if (preloader) {
-        preloader.classList.add('hidden');
-        setTimeout(() => preloader.remove(), 500);
-    }
-});
+    if (!preloader) return;
+
+    const hidePreloader = () => {
+        if (!preloader.classList.contains('hidden')) {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.remove(), 500);
+        }
+    };
+
+    window.addEventListener('load', hidePreloader);
+    setTimeout(hidePreloader, 5000); // seguridad: si en 5s no se ocultó, lo hacemos igual
+})();
 
 // ======================== MENÚ HAMBURGUESA ANIMADO ========================
 const menuToggle = document.getElementById('menu-toggle');

@@ -194,6 +194,7 @@ nav a:focus-visible {
     width: 100%;
     aspect-ratio: 1584 / 672;
     touch-action: pan-y;
+    background: #0a0a0a; /* Fondo oscuro para cuando usemos contain */
 }
 .slider-img {
     position: absolute;
@@ -809,13 +810,20 @@ footer {
         bottom: 20px;
         right: 20px;
     }
+
+    /* ===== SLIDER MÓVIL CORREGIDO ===== */
     .hero-slider {
         max-width: 96%;
         border-radius: 14px;
     }
     .slider-container {
-        aspect-ratio: 4 / 3;
-        min-height: 250px;
+        aspect-ratio: 1584 / 672;   /* proporción real de los banners */
+        min-height: unset;           /* sin altura mínima forzada */
+        background: #0a0a0a;
+    }
+    .slider-img {
+        object-fit: contain;        /* muestra la imagen completa sin recortes */
+        object-position: center;
     }
     .slider-btn {
         width: 32px;
@@ -831,7 +839,7 @@ footer {
 
 @media (max-width: 400px) {
     .slider-container {
-        aspect-ratio: 1 / 1;
-        min-height: 280px;
+        aspect-ratio: 1584 / 672;
+        min-height: unset;
     }
 }
